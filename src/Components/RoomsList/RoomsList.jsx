@@ -4,9 +4,9 @@ export const RoomsList = () => {
     return (
         <section className="dark">
         <div className="container">
-          <h2>Heading</h2>
+          <h2>Naše pokoje</h2>
           <p>
-            Quas odio quidem, enim nihil unde quia temporibus vitae in ab.
+            Vyberte si, který z našich pokojů je pro vás ten pravý.
           </p>
         
         < RoomCard />
