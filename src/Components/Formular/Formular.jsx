@@ -1,3 +1,5 @@
+import './Formular.css'
+
 export const Formular = () => {
     return (
           <form>

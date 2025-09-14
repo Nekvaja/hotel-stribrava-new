@@ -1,4 +1,5 @@
 import { Formular } from "../Formular/Formular"
+import './RoomDetail.css'
 
 export const RoomDetail = () => {
     return (

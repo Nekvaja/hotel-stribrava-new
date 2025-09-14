@@ -1,3 +1,5 @@
+import './RoomCard.css'
+
 export const RoomCard = () => {
     return (
              <div className="cards-row">
