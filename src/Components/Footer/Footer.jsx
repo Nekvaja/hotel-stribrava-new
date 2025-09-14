@@ -8,7 +8,7 @@ export const Footer = () => {
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus mollitia ut pariatur eos error sunt blanditiis repellat similique aperiam temporibus.
             </p>
           </div>
-          <img src="img/image1.svg" />
+          <img src="/img/mapa.png" alt="Mapa"/>
         </div>
       </section>
     )
