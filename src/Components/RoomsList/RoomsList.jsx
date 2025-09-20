@@ -1,7 +1,7 @@
 import { RoomCard } from "../RoomCard/RoomCard"
 import './RoomsList.css'
 
-export const RoomsList = ({ rooms }) => {
+export const RoomsList = ({ rooms, onSelectRoom }) => {
   return (
     <section className="dark">
       <div className="container">
@@ -12,7 +12,7 @@ export const RoomsList = ({ rooms }) => {
 
         <div className="cards-row">
         {rooms.map((room) => (
-          < RoomCard key={room.id} room={room}/>
+          < RoomCard key={room.id} room={room} onSelectRoom={onSelectRoom}/>
         ))
         }
         </div>
