@@ -1,0 +1,15 @@
+[
+    {
+        "id": 0,
+        "state": "",
+        "from": "",
+        "to": "",
+        "people": 0,
+        "meal": "",
+        "pets": false,
+        "extra-bed": false,
+        "accessible": false,
+        "email": "",
+        "tel": ""
+    }
+]

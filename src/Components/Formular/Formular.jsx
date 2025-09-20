@@ -91,10 +91,18 @@ export const Formular = ({selectedRoom, pricing}) => {
                 />
 
                 <label htmlFor="email" className="field-label">email:</label>
-                <input id="email" className="field-input" type="email" />
+                <input id="email" className="field-input" type="email" 
+                value={email}
+                placeholder={'example@email.com'}
+                onChange={(event) => setEmail(event.target.value)}
+                />
 
                 <label htmlFor="phone" className="field-label">Telefon:</label>
-                <input id="phone" className="field-input" type="tel" />
+                <input id="phone" className="field-input" type="tel"
+                value={tel}
+                placeholder='+420 123 456'
+                onChange={(event) => setTel(event.target.value)}
+                />
 
               </div>
               <h2>Celková cena za pobyt: {stayLength > 0 && people > 0 ? totalPrice : 0} Kč</h2>
