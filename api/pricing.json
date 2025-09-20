@@ -1,0 +1,17 @@
+[
+    {
+        "meals": {
+            "none": 0,
+            "breakfast": 200,
+            "half": 500,
+            "full": 700
+        }
+    },
+    {
+        "extras": {
+            "extra-bed": 300,
+            "pets": 200,
+            "accessible": 0
+        }
+    }
+]
