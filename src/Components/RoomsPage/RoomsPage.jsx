@@ -29,7 +29,7 @@ export const RoomsPage = () => {
 
     return (
 <>
-        {rooms.length === 0
+        {rooms.length === 0 || selectedRoom === null
                 ? 'Načítám data...'
                 : (
                     <>
@@ -41,4 +41,4 @@ export const RoomsPage = () => {
 
 </>
     )
-}
+};
