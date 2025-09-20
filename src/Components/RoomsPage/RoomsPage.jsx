@@ -6,7 +6,8 @@ import { RoomsList } from "../RoomsList/RoomsList"
 export const RoomsPage = () => {
 
     const [rooms, setRooms] = useState([]);
-    const [selectedRoomId, setSelectedRoomId] = useState(null)
+    const [selectedRoomId, setSelectedRoomId] = useState(null);
+    const [pricing, setPricing] = useState([])
    
 
     useEffect(() => {
@@ -17,7 +18,14 @@ export const RoomsPage = () => {
                 setSelectedRoomId(json.data[4].id)
          }  
 
+         const fetchPricing = async () => {
+                const response = await fetch('http://localhost:4000/api/pricing')
+                const json = await response.json();
+                setPricing(json.data);
+         }
+
          fetchRooms();
+         fetchPricing();
         
     }, []);
 
@@ -27,6 +35,7 @@ export const RoomsPage = () => {
    
       const selectedRoom = rooms.find((room) => room.id === selectedRoomId)
 
+
     return (
 <>
         {rooms.length === 0 || selectedRoom === null
@@ -34,7 +43,7 @@ export const RoomsPage = () => {
                 : (
                     <>
                         < RoomsList rooms={rooms} onSelectRoom={handleSelectRoom}/>
-                        < RoomDetail selectedRoom={selectedRoom}/>
+                        < RoomDetail selectedRoom={selectedRoom} pricing={pricing}/>
                     </>
                 )
         }

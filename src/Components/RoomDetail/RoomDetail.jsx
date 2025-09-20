@@ -1,7 +1,7 @@
 import { Formular } from "../Formular/Formular"
 import './RoomDetail.css'
 
-export const RoomDetail = ({selectedRoom}) => {
+export const RoomDetail = ({selectedRoom, pricing}) => {
     return (
         <section className="light">
         <div className="container">
@@ -12,7 +12,7 @@ export const RoomDetail = ({selectedRoom}) => {
               <p>{selectedRoom.description}</p>
             </div>
           
-        < Formular />
+        < Formular selectedRoom={selectedRoom} pricing={pricing}/>
 
           </div>
         </div>
