@@ -26,7 +26,7 @@ export const RoomsPage = () => {
                 ? 'Načítám data...'
                 : (
                     <>
-                        < RoomsList />
+                        < RoomsList rooms={rooms}/>
                         < RoomDetail />
                     </>
                 )
