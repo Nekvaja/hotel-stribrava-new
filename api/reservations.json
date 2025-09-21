@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": 0,
+    "state": "new",
+    "roomId": "room05",
+    "roomName": "Luxus",
+    "totalPrice": 18400,
+    "from": "2025-09-01",
+    "to": "2025-09-02",
+    "people": 2,
+    "meal": "breakfast",
+    "pets": true,
+    "extraBed": false,
+    "accessible": false,
+    "email": "jana.nekva@gmail.com",
+    "tel": "6070820559"
+  }
+]

@@ -38,7 +38,7 @@ export const Formular = ({selectedRoom, pricing}) => {
         body: JSON.stringify({
         "state": "new",
         "roomId": selectedRoom.id,
-        "name": selectedRoom.name,
+        "roomName": selectedRoom.name,
         "totalPrice": totalPrice,
         "from": from,
         "to": to,
