@@ -7,6 +7,7 @@ export const ReservationPage = () => {
 
     const [reservations, setReservations] = useState([]);
     const [phase, setPhase] = useState('all')
+    
 
     useEffect (() => {
         const fetchReservations = async () => {
@@ -33,7 +34,7 @@ export const ReservationPage = () => {
 
     return (
         <main>
-            <FiltersBar onSelectPhase={handleSelectPhase}/>
+            <FiltersBar onSelectPhase={handleSelectPhase} selectedPhase={phase}/>
             <ReservationsList reservations={reservations}/>
 
         </main>
