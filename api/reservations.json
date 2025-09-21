@@ -14,5 +14,21 @@
     "accessible": false,
     "email": "jana.nekva@gmail.com",
     "tel": "6070820559"
+  },
+  {
+    "id": 1,
+    "state": "approved",
+    "roomId": "room05",
+    "roomName": "Luxus",
+    "totalPrice": null,
+    "from": "",
+    "to": "",
+    "people": 0,
+    "meal": "",
+    "pets": false,
+    "extraBed": false,
+    "accessible": false,
+    "email": "",
+    "tel": ""
   }
 ]
