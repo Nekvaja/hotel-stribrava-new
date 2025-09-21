@@ -12,6 +12,7 @@ export const Formular = ({selectedRoom, pricing}) => {
   const [accessible, setAccessible] = useState(false);
   const [email, setEmail] = useState('');
   const [tel, setTel] = useState('');
+  const [submited, setSubmited] = useState(false);
 
   const stayLength = Number(dayjs(to).diff(dayjs(from), 'day'));
 
@@ -26,9 +27,44 @@ export const Formular = ({selectedRoom, pricing}) => {
   
   const totalPrice = (mealPrice * people * stayLength) + (selectedRoom.price * stayLength * people) + petPrice + extraBedPrice;
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-   }
+
+      const response = await fetch('http://localhost:4000/api/reservations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+        "state": "new",
+        "roomId": selectedRoom.id,
+        "totalPrice": totalPrice,
+        "from": from,
+        "to": to,
+        "people": people,
+        "meal": meal,
+        "pets": pets,
+        "extra-bed": extraBed,
+        "accessible": accessible,
+        "email": email,
+        "tel": tel
+        }),
+    })
+
+      if (response.ok) {
+        setSubmited(true)
+      }
+    };
+
+  if (submited) {
+    return (
+      <div className='reservation-message'>
+        <p>Děkujeme za rezervaci.</p>
+        <p>Vyčkejte prosím na potvrzení.</p>
+      </div>
+    )
+  }
+
 
     return (
           <form onSubmit={handleSubmit}>
@@ -106,7 +142,7 @@ export const Formular = ({selectedRoom, pricing}) => {
 
               </div>
               <h2>Celková cena za pobyt: {stayLength > 0 && people > 0 ? totalPrice : 0} Kč</h2>
-              <button className="wide" type="submit">Odeslat</button>
+              <button className="wide" type="submit">Rezervovat</button>
             </form>
     )
 };
