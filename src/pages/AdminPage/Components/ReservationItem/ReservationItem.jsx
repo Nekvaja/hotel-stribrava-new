@@ -1,4 +1,4 @@
-export const ReservationItem = ({from, to, roomId, roomName, totalPrice, meal, pets, extraBed, accessible, tel, email}) => {
+export const ReservationItem = ({from, to, roomId, roomName, totalPrice, meal, pets, extraBed, accessible, tel, email, state}) => {
     return (
         <div className='reservation-list__item'>
             <div className='reservation-item__summary'>
@@ -20,7 +20,7 @@ export const ReservationItem = ({from, to, roomId, roomName, totalPrice, meal, p
                         <p>Email: {email}</p>
                     </div>
                     <div className='reservation-item__state'>
-                        <p>NEW</p>
+                        <p>{(state.toUpperCase())}</p>
                     </div>
                 </div>
                 <div className='reservation-item__rows'>

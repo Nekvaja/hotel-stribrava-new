@@ -9,6 +9,7 @@ export const ReservationsList = ({reservations}) => {
             : reservations.map((reservation) => (
                 <ReservationItem 
                 key={reservation.id} 
+                state={reservation.state}
                 from={reservation.from}
                 to={reservation.to}
                 roomId={reservation.roomId}
