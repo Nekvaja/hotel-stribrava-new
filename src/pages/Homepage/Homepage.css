@@ -18,7 +18,7 @@ section {
 }
 
 section.dark {
-  background-color: gray;
+  background-color: #131e2a;
   color: white;
 }
 
@@ -49,7 +49,7 @@ section.dark *::-webkit-scrollbar-thumb:hover {
 }
 
 section.light {
-  background-color: #e8e9f3;
+  background-color: #e8e9F3;
 }
 
 img {
