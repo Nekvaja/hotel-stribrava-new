@@ -17,6 +17,10 @@ export const FiltersBar = ({onSelectPhase, selectedPhase}) => {
                         value={'approved'}
                         onClick={(event) => onSelectPhase(event.target.value)}
                 >Potvrzené</button>
+                <button className={selectedPhase === 'rejected' ? 'filters__state-btn filters__state-btn--all filters__state-btn--active' : 'filters__state-btn filters__state-btn--all'}
+                        value={'rejected'}
+                        onClick={(event) => onSelectPhase(event.target.value)}
+                >Zrušené</button>
             </div>
 
             <div className='filters__search'>

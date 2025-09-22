@@ -35,7 +35,7 @@ export const ReservationPage = () => {
     return (
         <main>
             <FiltersBar onSelectPhase={handleSelectPhase} selectedPhase={phase}/>
-            <ReservationsList reservations={reservations}/>
+            <ReservationsList reservations={reservations} selectedPhase={phase}/>
 
         </main>
     )

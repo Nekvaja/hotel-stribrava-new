@@ -1,11 +1,25 @@
 import { ReservationItem } from "../ReservationItem/ReservationItem"
 
-export const ReservationsList = ({reservations}) => {
+export const ReservationsList = ({reservations, selectedPhase}) => {
+
+    let noResultsMessage = '';
+
+    if (selectedPhase === 'all') {
+        noResultsMessage = '';
+    } else if (selectedPhase === 'new') {
+        noResultsMessage = 'nové '
+    } else if (selectedPhase === 'rejected') {
+        noResultsMessage = 'zrušené '
+    } else {
+        noResultsMessage = 'potvrzené '
+    }
+
+
     return (
         <div className='reservation-list'>
             
             {reservations.length === 0 
-            ? <p>Nemáte žádné rezervace</p> 
+            ? <p>Nemáte žádné {noResultsMessage}rezervace</p> 
             : reservations.map((reservation) => (
                 <ReservationItem 
                 key={reservation.id} 
