@@ -1,6 +1,6 @@
 import { ReservationItem } from "../ReservationItem/ReservationItem"
 
-export const ReservationsList = ({reservations, selectedPhase}) => {
+export const ReservationsList = ({reservations, selectedPhase, onChangeState}) => {
 
     let noResultsMessage = '';
 
@@ -23,6 +23,7 @@ export const ReservationsList = ({reservations, selectedPhase}) => {
             : reservations.map((reservation) => (
                 <ReservationItem 
                 key={reservation.id} 
+                id={reservation.id}
                 state={reservation.state}
                 from={reservation.from}
                 to={reservation.to}
@@ -35,6 +36,7 @@ export const ReservationsList = ({reservations, selectedPhase}) => {
                 accessible={reservation.accessible}
                 tel={reservation.tel}
                 email={reservation.email}
+                onChangeState={onChangeState}
                 />
             ))
             }

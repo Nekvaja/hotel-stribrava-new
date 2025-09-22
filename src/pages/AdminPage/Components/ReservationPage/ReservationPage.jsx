@@ -32,10 +32,33 @@ export const ReservationPage = () => {
         setPhase(filter)
     }
 
+    const handleChangeState = async (id, state) => {
+        const response = await fetch(`http://localhost:4000/api/reservations/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify([
+                {
+                    "op": "replace",
+                    "path": "/state",
+                    "value": `${state}`
+                }
+            ]),
+        });
+
+        if (!response.ok) {
+            alert('Něco se nepovedlo')
+        } else {
+            window.location.reload();
+        }
+
+    };
+
     return (
         <main>
             <FiltersBar onSelectPhase={handleSelectPhase} selectedPhase={phase}/>
-            <ReservationsList reservations={reservations} selectedPhase={phase}/>
+            <ReservationsList reservations={reservations} selectedPhase={phase} onChangeState={handleChangeState}/>
 
         </main>
     )

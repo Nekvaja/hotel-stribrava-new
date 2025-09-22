@@ -1,7 +1,7 @@
 [
   {
     "id": 0,
-    "state": "new",
+    "state": "approved",
     "roomId": "room05",
     "roomName": "Luxus",
     "totalPrice": 18400,
@@ -17,7 +17,7 @@
   },
   {
     "id": 1,
-    "state": "approved",
+    "state": "rejected",
     "roomId": "room05",
     "roomName": "Luxus",
     "totalPrice": null,

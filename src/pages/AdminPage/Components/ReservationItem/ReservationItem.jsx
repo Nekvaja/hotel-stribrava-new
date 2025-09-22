@@ -1,4 +1,4 @@
-export const ReservationItem = ({from, to, roomId, roomName, totalPrice, meal, pets, extraBed, accessible, tel, email, state}) => {
+export const ReservationItem = ({id, from, to, roomId, roomName, totalPrice, meal, pets, extraBed, accessible, tel, email, state, onChangeState}) => {
     return (
         <div className='reservation-list__item'>
             <div className='reservation-item__summary'>
@@ -25,8 +25,12 @@ export const ReservationItem = ({from, to, roomId, roomName, totalPrice, meal, p
                 </div>
                 <div className='reservation-item__rows'>
                     <div className='reservation-item__actions'>
-                        <button className='btn btn--approve' type='button'>Potvrdit</button>
-                        <button className='btn btn--reject' type='button'>Zrušit</button>
+                        <button className='btn btn--approve' type='button'
+                                onClick={() => onChangeState(id, 'approved')}
+                        >Potvrdit</button>
+                        <button className='btn btn--reject' type='button'
+                                onClick={() => onChangeState(id, 'rejected')}
+                        >Zrušit</button>
                     </div>
                 </div>
             </div>
