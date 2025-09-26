@@ -27,15 +27,18 @@ export const Formular = ({selectedRoom, pricing}) => {
   
   const totalPrice = (mealPrice * people * stayLength) + (selectedRoom.price * stayLength * people) + petPrice + extraBedPrice;
 
+   const createdAt = (dayjs().format('YYYY-MM-DD').toString());
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+        
       const response = await fetch('http://localhost:4000/api/reservations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+        "createdAt": createdAt,
         "state": "new",
         "roomId": selectedRoom.id,
         "roomName": selectedRoom.name,
