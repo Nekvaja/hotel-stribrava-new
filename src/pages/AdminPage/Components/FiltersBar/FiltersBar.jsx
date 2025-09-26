@@ -24,10 +24,18 @@ export const FiltersBar = ({onSelectPhase, selectedPhase}) => {
             </div>
 
             <div className='filters__search'>
-                Vyhledat
+                <label htmlFor="search" className="field-label">Vyhledat:</label>
+                <input id="search" className="field-input" type="text" 
+                />
             </div>
             <div className='filters__sort'>
-                Seřadit
+                <label htmlFor="sort" className=""
+                       value={'stayDate'} 
+                >Seřadit podle:</label>
+                <select id="sort" className="field-input">
+                  <option value="stayDate">data pobytu</option>
+                  <option value="createdAt">data přijetí poptávky</option>
+                </select>
             </div>
         </div>
     )
