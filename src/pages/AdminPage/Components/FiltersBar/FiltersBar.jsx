@@ -1,7 +1,7 @@
-import { useState } from "react"
 
-export const FiltersBar = ({onSelectPhase, selectedPhase}) => {
-     
+
+export const FiltersBar = ({onSelectPhase, selectedPhase, onSort}) => {
+         
     return (
         <div className='filters'>
             <div className='filters-state'>
@@ -30,11 +30,17 @@ export const FiltersBar = ({onSelectPhase, selectedPhase}) => {
             </div>
             <div className='filters__sort'>
                 <label htmlFor="sort" className=""
-                       value={'stayDate'} 
+                       
                 >Seřadit podle:</label>
-                <select id="sort" className="field-input">
-                  <option value="stayDate">data pobytu</option>
-                  <option value="createdAt">data přijetí poptávky</option>
+                <select id="sort" className="field-input"
+                        onChange={(event) => onSort(event.target.value)}
+                        value={event.target.value}
+                                         
+                >
+                  <option value="from"  
+                  >data pobytu</option>
+                  <option value={'createdAt'}
+                  >data přijetí poptávky</option>
                 </select>
             </div>
         </div>

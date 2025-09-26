@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import { FiltersBar } from "../FiltersBar/FiltersBar"
 import { ReservationsList } from "../ReservationsList/ReservationsList"
+import dayjs from "dayjs";
 
 
 export const ReservationPage = () => {
 
     const [reservations, setReservations] = useState([]);
     const [phase, setPhase] = useState('all')
+    const [sortBy, setSortBy] = useState('from')
     
 
     useEffect (() => {
@@ -19,18 +21,34 @@ export const ReservationPage = () => {
             const response = await fetch(url);
             
             const json = await response.json();
-            setReservations(json.data)
-            console.log(json.data)
+
+            let sorted = '';
+            
+            if (sortBy === 'from') {
+                    sorted = [...json.data].sort(
+                (a, b) => dayjs(a.from).diff(dayjs(b.from))
+                 )
+                } else if (sortBy === 'createdAt') {
+                    sorted = [...json.data].sort(
+                (a, b) => dayjs(a.createdAt).diff(dayjs(b.createdAt))
+                 )
+                }
+
+
+            setReservations(sorted)
+           
             } 
 
         fetchReservations();
         
 
-}, [phase])
+}, [phase, sortBy])
 
     const handleSelectPhase = (filter) => {
         setPhase(filter)
     }
+
+     const handleSort = (value) => setSortBy(value);
 
     const handleChangeState = async (id, state) => {
         const response = await fetch(`http://localhost:4000/api/reservations/${id}`, {
@@ -57,8 +75,8 @@ export const ReservationPage = () => {
 
     return (
         <main>
-            <FiltersBar onSelectPhase={handleSelectPhase} selectedPhase={phase}/>
-            <ReservationsList reservations={reservations} selectedPhase={phase} onChangeState={handleChangeState}/>
+            <FiltersBar onSelectPhase={handleSelectPhase} selectedPhase={phase} onSort={handleSort}/>
+            <ReservationsList reservations={reservations} selectedPhase={phase} onChangeState={handleChangeState} />
 
         </main>
     )

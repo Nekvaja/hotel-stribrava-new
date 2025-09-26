@@ -1,6 +1,6 @@
 import { ReservationItem } from "../ReservationItem/ReservationItem"
 
-export const ReservationsList = ({reservations, selectedPhase, onChangeState}) => {
+export const ReservationsList = ({reservations, selectedPhase, onChangeState, onSort}) => {
 
     let noResultsMessage = '';
 
