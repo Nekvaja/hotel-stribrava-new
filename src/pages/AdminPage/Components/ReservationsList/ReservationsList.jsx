@@ -24,6 +24,7 @@ export const ReservationsList = ({reservations, selectedPhase, onChangeState}) =
                 <ReservationItem 
                 key={reservation.id} 
                 id={reservation.id}
+                createdAt={reservation.createdAt}
                 state={reservation.state}
                 from={reservation.from}
                 to={reservation.to}

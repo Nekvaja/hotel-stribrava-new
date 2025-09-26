@@ -1,9 +1,11 @@
-export const ReservationItem = ({id, from, to, roomId, roomName, totalPrice, meal, pets, extraBed, accessible, tel, email, state, onChangeState}) => {
+import dayjs from "dayjs"
+
+export const ReservationItem = ({id, from, to, roomId, roomName, totalPrice, meal, pets, extraBed, accessible, tel, email, state, onChangeState, createdAt}) => {
     return (
         <div className='reservation-list__item'>
             <div className='reservation-item__summary'>
-                <p>Od: {from}</p>
-                <p>Do: {to}</p>
+                <p>Od: {dayjs(from).format('DD.MM.YYYY')}</p>
+                <p>Do: {dayjs(to).format('DD.MM.YYYY')}</p>
                 <p>Pokoj: {roomId} - {roomName}</p>
                 <p>Total: {totalPrice} Kč</p>
             </div>
@@ -21,6 +23,7 @@ export const ReservationItem = ({id, from, to, roomId, roomName, totalPrice, mea
                     </div>
                     <div className='reservation-item__state'>
                         <p>{(state.toUpperCase())}</p>
+                        <p>{dayjs(createdAt).format('DD.MM.YYYY')}</p>
                     </div>
                 </div>
                 <div className='reservation-item__rows'>
