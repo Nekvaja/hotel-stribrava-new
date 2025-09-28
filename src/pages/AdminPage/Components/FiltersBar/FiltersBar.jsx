@@ -1,6 +1,6 @@
 
 
-export const FiltersBar = ({onSelectPhase, selectedPhase, onSort}) => {
+export const FiltersBar = ({onSelectPhase, selectedPhase, onSort, onSearch, search}) => {
          
     return (
         <div className='filters'>
@@ -26,6 +26,8 @@ export const FiltersBar = ({onSelectPhase, selectedPhase, onSort}) => {
             <div className='filters__search'>
                 <label htmlFor="search" className="field-label">Vyhledat:</label>
                 <input id="search" className="field-input" type="text" 
+                        value={search}
+                        onChange={(event) => onSearch(event.target.value)}
                 />
             </div>
             <div className='filters__sort'>

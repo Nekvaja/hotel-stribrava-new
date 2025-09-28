@@ -7,8 +7,9 @@ import dayjs from "dayjs";
 export const ReservationPage = () => {
 
     const [reservations, setReservations] = useState([]);
-    const [phase, setPhase] = useState('all')
-    const [sortBy, setSortBy] = useState('from')
+    const [phase, setPhase] = useState('all');
+    const [sortBy, setSortBy] = useState('from');
+    const [searchBy, setSearchBy] = useState('');
     
 
     useEffect (() => {
@@ -23,7 +24,7 @@ export const ReservationPage = () => {
             const json = await response.json();
 
             let sorted = '';
-            
+
             if (sortBy === 'from') {
                     sorted = [...json.data].sort(
                 (a, b) => dayjs(a.from).diff(dayjs(b.from))
@@ -42,13 +43,26 @@ export const ReservationPage = () => {
         fetchReservations();
         
 
-}, [phase, sortBy])
+}, [phase, sortBy ])
 
     const handleSelectPhase = (filter) => {
         setPhase(filter)
     }
 
      const handleSort = (value) => setSortBy(value);
+
+     const handleSearch = (value) => setSearchBy(value);
+
+     let filteredReservations = reservations;
+
+     if (searchBy.length >= 3) {
+        filteredReservations = reservations.filter((r) => {
+            return Object.values(r).some((value => {
+                return String(value).toLocaleLowerCase().includes(searchBy.toLocaleLowerCase())
+            }))
+        })
+     };
+    
 
     const handleChangeState = async (id, state) => {
         const response = await fetch(`http://localhost:4000/api/reservations/${id}`, {
@@ -75,9 +89,8 @@ export const ReservationPage = () => {
 
     return (
         <main>
-            <FiltersBar onSelectPhase={handleSelectPhase} selectedPhase={phase} onSort={handleSort}/>
-            <ReservationsList reservations={reservations} selectedPhase={phase} onChangeState={handleChangeState} />
-
+            <FiltersBar onSelectPhase={handleSelectPhase} selectedPhase={phase} onSort={handleSort} onSearch={handleSearch} search={searchBy}/>
+            <ReservationsList reservations={filteredReservations} selectedPhase={phase} onChangeState={handleChangeState} />
         </main>
     )
 }
